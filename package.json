@@ -7,8 +7,10 @@
     "dev": "nodemon src/server.ts",
     "build": "tsc -p .",
     "start": "node dist/server.js",
-    "lint": "eslint .",
-    "lint:fix": "eslint --fix",
+    "lint": "eslint . -c ts -c tsx -c js --quiet",
+    "lint:fix": "eslint . --fix",
+    "format:check": "prettier --check .",
+    "format:fix": "prettier --write .",
     "prepare": "husky"
   },
   "keywords": [],
@@ -17,7 +19,8 @@
   "dependencies": {},
   "lint-staged": {
     "*.ts": [
-      "yarn lint:fix"
+      "yarn lint:fix",
+      "yarn format:fix"
     ]
   },
   "devDependencies": {
@@ -27,10 +30,12 @@
     "@types/eslint__js": "^8.42.3",
     "@types/node": "^22.5.0",
     "eslint": "^9.9.1",
+    "eslint-config-prettier": "^9.1.0",
     "husky": "^9.1.5",
     "lint-staged": "^15.2.9",
     "nodemon": "^3.1.4",
     "npm": "^10.8.2",
+    "prettier": "3.3.3",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.4",
     "typescript-eslint": "^8.2.0"
