@@ -1,12 +1,15 @@
 import app from './app';
 import config from './config';
+import dbService from './service/dbService';
 import logger from './utils/logger';
 
 const server = app.listen(config.PORT);
 
-function startServer() {
+async function startServer() {
   try {
     // Database connection
+    await dbService.connectToMongoDB();
+
     logger.info('APPLICATION_STARTED', {
       meta: {
         port: config.PORT,
