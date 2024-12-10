@@ -8,20 +8,35 @@ import config from '../config';
 import { EApplicationEnvironment } from '../constants/application';
 import path from 'path';
 import * as sourceMapSupport from 'source-map-support';
+import { blue, green, magenta, red, yellow } from 'colorette';
 
 // Linking Trace support
 sourceMapSupport.install();
 
+const colorizeLevel = (level: string) => {
+  switch (level) {
+    case 'ERROR':
+      return red(level);
+    case 'INFO':
+      return blue(level);
+    case 'WARN':
+      return yellow(level);
+    default:
+      return level;
+  }
+};
+
 const consoleLogFormat = format.printf((info) => {
   const { level, message, timestamp, meta = {} } = info;
 
-  const customLevel = level.toUpperCase();
-  const customTimestamp = timestamp;
+  const customLevel = colorizeLevel(level.toUpperCase());
+  const customTimestamp = green(timestamp as string);
   const customMeta = util.inspect(meta, {
-    depth: null
+    depth: null,
+    colors: true
   });
 
-  const customLog = `${customLevel} [${customTimestamp}] ${message}\n${'META'} ${customMeta}\n`;
+  const customLog = `${customLevel} [${customTimestamp}] ${message}\n${magenta('META')} ${customMeta}\n`;
 
   return customLog;
 });
