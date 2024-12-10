@@ -3,6 +3,7 @@ import { THttpError } from '../types';
 import responseMessages from '../constants/responseMessages';
 import config from '../config';
 import { EApplicationEnvironment } from '../constants/application';
+import logger from './logger';
 
 export default (
   err: Error | unknown,
@@ -25,10 +26,9 @@ export default (
     trace: err instanceof Error ? { error: err.stack } : null
   };
 
-  // logger
-  //   console.error('CONTROLLER_ERROR', {
-  //     meta: errorObj
-  //   });
+  logger.error('CONTROLLER_ERROR', {
+    meta: errorObj
+  });
 
   //   Production ENV check
   if (config.ENV === EApplicationEnvironment.PRODUCTION) {

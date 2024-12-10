@@ -1,23 +1,24 @@
 import app from './app';
 import config from './config';
+import logger from './utils/logger';
 
 const server = app.listen(config.PORT);
 
 function startServer() {
   try {
-    // console.info('APPLICATION_STARTED', {
-    //   meta: {
-    //     port: config.PORT,
-    //     server: config.SERVER_URL
-    //   }
-    // });
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    // Database connection
+    logger.info('APPLICATION_STARTED', {
+      meta: {
+        port: config.PORT,
+        server: config.SERVER_URL
+      }
+    });
   } catch (error) {
-    // console.error('APPLICATION_ERROR', { meta: error });
+    logger.error('APPLICATION_ERROR', { meta: error });
 
     server.close((err) => {
       if (err) {
-        // console.error('APPLICATION_ERROR', { meta: err });
+        logger.error('APPLICATION_ERROR', { meta: err });
       }
       process.exit(1);
     });
