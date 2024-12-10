@@ -7,6 +7,10 @@ import util from 'util';
 import config from '../config';
 import { EApplicationEnvironment } from '../constants/application';
 import path from 'path';
+import * as sourceMapSupport from 'source-map-support';
+
+// Linking Trace support
+sourceMapSupport.install();
 
 const consoleLogFormat = format.printf((info) => {
   const { level, message, timestamp, meta = {} } = info;
