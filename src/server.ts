@@ -3,7 +3,7 @@ import config from './config';
 
 const server = app.listen(config.PORT);
 
-(() => {
+function startServer() {
   try {
     // console.info('APPLICATION_STARTED', {
     //   meta: {
@@ -22,4 +22,6 @@ const server = app.listen(config.PORT);
       process.exit(1);
     });
   }
-})();
+}
+
+startServer();

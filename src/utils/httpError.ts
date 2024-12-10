@@ -6,7 +6,7 @@ export default (
   err: Error | unknown,
   req: Request,
   errorStatusCode = 500
-) => {
+): void => {
   const errorObj = errorObject(err, req, errorStatusCode);
   return nextFunc(errorObj);
 };

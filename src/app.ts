@@ -1,9 +1,8 @@
-import express, { Application, NextFunction, Request, Response } from 'express';
+import express, { Application } from 'express';
 import path from 'path';
 import router from './router/apiRouter';
 import globalErrorHandler from './middlewares/globalErrorHandler';
-import httpError from './utils/httpError';
-import responseMessages from './constants/responseMessages';
+import routeNotFoundHandler from './middlewares/routeNotFoundHandler';
 
 const app: Application = express();
 
@@ -15,13 +14,7 @@ app.use(express.static(path.join(__dirname, '../', 'public')));
 app.use('/api/v1', router);
 
 // 404 error handler
-app.use((req: Request, _res: Response, next: NextFunction) => {
-  try {
-    throw new Error(responseMessages.NOT_FOUND('route'));
-  } catch (error) {
-    httpError(next, error, req, 404);
-  }
-});
+app.use(routeNotFoundHandler);
 
 // globalErrorHandler
 app.use(globalErrorHandler);

@@ -5,7 +5,7 @@ import httpError from '../utils/httpError';
 
 export const self = (req: Request, res: Response, next: NextFunction) => {
   try {
-    httpResponse(req, res, 200, responseMessages.SUCCESS, { id: 'id' });
+    httpResponse(req, res, 200, responseMessages.SUCCESS);
   } catch (err) {
     httpError(next, err, req, 500);
   }
