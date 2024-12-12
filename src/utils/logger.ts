@@ -7,10 +7,11 @@ import {
   ConsoleTransportInstance,
   FileTransportInstance
 } from 'winston/lib/winston/transports';
+import { MongoDBTransportInstance } from 'winston-mongodb';
+import 'winston-mongodb';
 
 import config from '../config';
 import { EApplicationEnvironment } from '../constants/application';
-
 // Linking Trace support
 sourceMapSupport.install();
 
@@ -91,11 +92,23 @@ const fileTransport = (): FileTransportInstance[] => {
   ];
 };
 
+const mongoDBTransport = (): MongoDBTransportInstance[] => {
+  return [
+    new transports.MongoDB({
+      level: 'info',
+      db: config.MONGO_DB_URL,
+      metaKey: 'meta',
+      expireAfterSeconds: 3600 * 24 * 30, // 30 days
+      collection: 'application-logs'
+    })
+  ];
+};
+
 const logger = createLogger({
   defaultMeta: {
     meta: {}
   },
-  transports: [...consoleTransport(), ...fileTransport()]
+  transports: [...consoleTransport(), ...fileTransport(), ...mongoDBTransport()]
 });
 
 export default logger;
