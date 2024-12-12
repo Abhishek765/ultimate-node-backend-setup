@@ -1,8 +1,9 @@
 import { Request, Response } from 'express';
-import { THttpResponse } from '../types';
+
+import logger from './logger';
 import config from '../config';
 import { EApplicationEnvironment } from '../constants/application';
-import logger from './logger';
+import { THttpResponse } from '../types';
 
 export default (
   req: Request,

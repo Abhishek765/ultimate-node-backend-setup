@@ -7,7 +7,8 @@
     "dev": "cross-env NODE_ENV=development nodemon src/server.ts",
     "build": "tsc -p .",
     "start": "cross-env NODE_ENV=production node dist/server.js",
-    "lint": "eslint . -c ts -c tsx -c js --quiet",
+    "typecheck": "tsc --noEmit --incremental false",
+    "lint:check": "eslint . --quiet",
     "lint:fix": "eslint . --fix",
     "format:check": "prettier --check .",
     "format:fix": "prettier --write .",
@@ -23,7 +24,8 @@
     "express": "^4.19.2",
     "mongoose": "^8.8.4",
     "source-map-support": "^0.5.21",
-    "winston": "^3.17.0"
+    "winston": "^3.17.0",
+    "winston-mongodb": "^6.0.0"
   },
   "lint-staged": {
     "*.ts": [
@@ -41,6 +43,8 @@
     "@types/source-map-support": "^0.5.10",
     "eslint": "^9.9.1",
     "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "eslint-plugin-unused-imports": "^4.1.4",
     "husky": "^9.1.5",
     "lint-staged": "^15.2.9",
     "nodemon": "^3.1.4",

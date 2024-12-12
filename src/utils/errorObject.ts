@@ -1,9 +1,10 @@
 import { Request } from 'express';
-import { THttpError } from '../types';
-import responseMessages from '../constants/responseMessages';
+
+import logger from './logger';
 import config from '../config';
 import { EApplicationEnvironment } from '../constants/application';
-import logger from './logger';
+import responseMessages from '../constants/responseMessages';
+import { THttpError } from '../types';
 
 export default (
   err: Error | unknown,

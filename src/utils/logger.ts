@@ -1,14 +1,15 @@
-import { createLogger, transports, format } from 'winston';
+import { blue, green, magenta, red, yellow } from 'colorette';
+import path from 'path';
+import * as sourceMapSupport from 'source-map-support';
+import util from 'util';
+import { createLogger, format, transports } from 'winston';
 import {
   ConsoleTransportInstance,
   FileTransportInstance
 } from 'winston/lib/winston/transports';
-import util from 'util';
+
 import config from '../config';
 import { EApplicationEnvironment } from '../constants/application';
-import path from 'path';
-import * as sourceMapSupport from 'source-map-support';
-import { blue, green, magenta, red, yellow } from 'colorette';
 
 // Linking Trace support
 sourceMapSupport.install();

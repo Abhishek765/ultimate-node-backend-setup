@@ -1,7 +1,8 @@
 import { NextFunction, Request, Response } from 'express';
-import httpResponse from '../utils/httpResponse';
+
 import responseMessages from '../constants/responseMessages';
 import httpError from '../utils/httpError';
+import httpResponse from '../utils/httpResponse';
 
 export const self = (req: Request, res: Response, next: NextFunction) => {
   try {

@@ -1,8 +1,9 @@
 import express, { Application } from 'express';
 import path from 'path';
-import router from './router/apiRouter';
+
 import globalErrorHandler from './middlewares/globalErrorHandler';
 import routeNotFoundHandler from './middlewares/routeNotFoundHandler';
+import router from './router/apiRouter';
 
 const app: Application = express();
 
