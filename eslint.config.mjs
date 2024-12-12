@@ -13,7 +13,7 @@ export default tseslint.config({
       tsconfigRootDir: import.meta.dirname
     }
   },
-  ignores: ['dist/**/*', 'node_modules/*', '**/*.js'],
+  ignores: ['dist/**/*', 'node_modules/*', '**/*.js', 'migrations/**/*'],
   files: ['**/*.ts', '**/*.js'],
   plugins: {
     'simple-import-sort': simpleImportSort,
@@ -21,6 +21,7 @@ export default tseslint.config({
   },
   extends: [
     eslint.configs.recommended,
+    // @ts-ignore
     eslintConfigPrettier,
     ...tseslint.configs.strict,
     ...tseslint.configs.stylistic

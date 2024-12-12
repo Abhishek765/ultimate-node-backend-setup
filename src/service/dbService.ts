@@ -7,9 +7,7 @@ export default {
   // Mongo DB configuration
   connectToMongoDB: async () => {
     try {
-      const conn = await mongoose.connect(config.MONGO_DB_URL, {
-        dbName: 'ultimate-node-db'
-      });
+      const conn = await mongoose.connect(config.MONGO_DB_URL);
       logger.info('MONGO_DB_CONNECTION_SUCCESS', {
         meta: {
           message: `Database connection established with ${conn.connection.name}`
