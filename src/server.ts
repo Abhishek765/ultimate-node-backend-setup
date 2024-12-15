@@ -1,6 +1,6 @@
 import app from './app';
 import config from './config';
-import dbService from './service/dbService';
+import dbService from './service/db.service';
 import logger from './utils/logger';
 
 const server = app.listen(config.PORT);

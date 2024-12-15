@@ -4,9 +4,9 @@ import helmet from 'helmet';
 import path from 'path';
 
 import config from './config';
-import globalErrorHandler from './middlewares/globalErrorHandler';
-import routeNotFoundHandler from './middlewares/routeNotFoundHandler';
-import router from './router/apiRouter';
+import globalErrorHandlerMiddleware from './middlewares/globalErrorHandler.middleware';
+import routeNotFoundHandlerMiddleware from './middlewares/routeNotFoundHandler.middleware';
+import router from './router/app.router';
 
 const app: Application = express();
 
@@ -26,9 +26,9 @@ app.use(express.static(path.join(__dirname, '../', 'public')));
 app.use('/api/v1', router);
 
 // 404 error handler
-app.use(routeNotFoundHandler);
+app.use(routeNotFoundHandlerMiddleware);
 
 // globalErrorHandler
-app.use(globalErrorHandler);
+app.use(globalErrorHandlerMiddleware);
 
 export default app;
