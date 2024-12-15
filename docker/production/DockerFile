@@ -1,0 +1,30 @@
+# Using lightweight docker image of node
+FROM node:20-alpine AS base
+
+# Update Alpine package manager and install bash for script compatibility
+RUN apk update && apk add bash
+
+# Install specific Yarn version
+RUN rm -f /usr/local/bin/yarn
+RUN npm install -g --force yarn
+
+# Set the working directory inside the container
+WORKDIR /usr/src/ultimate-backend-app
+
+# Copy dependency files to the working directory
+COPY package.json yarn.lock ./
+
+# Install only production dependencies using Yarn with frozen lockfile to ensure consistency
+RUN yarn --frozen-lockfile --only=production
+
+# Copy all files from the local project directory to the container
+COPY . .
+
+# Build the project
+RUN yarn build
+
+# Expose port 8000 to allow external access to the application
+EXPOSE 8000
+
+# Define the default command to run the application in production mode
+CMD [ "yarn", "start" ]

@@ -4,7 +4,7 @@
   "description": "",
   "main": "dist/server.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development nodemon src/server.ts",
+    "dev": "cross-env NODE_ENV=development nodemon --legacy-watch src/server.ts",
     "build": "tsc -p .",
     "start": "cross-env NODE_ENV=production node dist/server.js",
     "typecheck": "tsc --noEmit --incremental false",
