@@ -1,6 +1,11 @@
-# This is node js backend template
+# This is node js backend template (with typescript)
 
-## MongoDB Migration
+## Database setup 💿
+
+- MongoDB, other database configuration is possible
+- [Reference for Database setup](https://github.com/Abhishek765/ultimate-node-backend-setup/blob/732d4e14c2ac47eb632883a6b19fa20a459ce65b/src/service/db.service.ts)
+
+## MongoDB Migration 💽
 
 - Check this [article](https://www.freecodecamp.org/news/handle-mongodb-migrations-with-ts-migrate-mongoose/) to know more about mongoDB migrations
 
@@ -46,7 +51,12 @@ yarn migrate:dev list
 yarn migrate:dev prune
 ```
 
-## How to containerize the app
+## Logging ℹ️
+
+- [Winston](https://www.npmjs.com/package/winston) logging
+- [Reference for logger setup](https://github.com/Abhishek765/ultimate-node-backend-setup/blob/225026288beec40a3fb2f83ada0947848530d7ac/src/utils/httpResponse.ts)
+
+## How to containerize the app 🐳
 
 ### Development
 
